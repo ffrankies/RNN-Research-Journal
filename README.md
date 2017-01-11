@@ -102,7 +102,7 @@ from start to finish, but they were all used up to a point.
 *   It may take a while to figure out when to use plain python, and when to
     use the Theano library.
 
-#### Deep Learning with Theano Tutorial [link](http://https://goo.gl/mp5zMA)
+#### Deep Learning with Theano Tutorial [link](http://goo.gl/mp5zMA)
 
 *   Tutorial from [DeepLearning.net](http://deeplearning.net)
 *   Probably the most complete Deep Learning tutorial out there.
