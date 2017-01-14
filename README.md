@@ -44,7 +44,7 @@ This project's objectives are, in relative order:
 10. If time permits, optimize Terry for better performance.
 
 ### Other
-*   Present a poster or presentation on Student Scholars Day.s
+*   Present a poster or presentation on Student Scholars Days.
 
 ---
 
@@ -66,6 +66,11 @@ This project's objectives are, in relative order:
 *   Couldn't log in to seawolf, connection timed out.
 *   Worked on journal.
 
+### Jan 13 2017
+
+*   Updated journal with all the resources used up to this point (that I could
+    remember)
+
 ---
 
 <a name="resources"/>
@@ -73,7 +78,7 @@ This project's objectives are, in relative order:
 ## Resources
 
 *   [Tutorials](#tutorials)
-*   [Books](#books)
+*   [Books and Blog Posts](#books)
 *   [Other](#other)
 
 <a name="tutorials"/>
@@ -113,21 +118,7 @@ from start to finish, but they were all used up to a point.
 
 <a name="books"/>
 
-### Books
-
-#### The Deep Learning Textbook [link](http://www.deeplearningbook.org)
-
-*   Authors: Ian Goodfellow, Yoshua Bengio, Aaron Courville
-*   This is an in-depth look at Deep Learning and various Deep Neural Network
-    Models.
-*   It is pretty heavy reading, and generally hard to follow, at least from the
-    perspective of an undergrad with almost no Machine Learning experience.
-*   I switched from the book to the tutorials pretty early because they were
-    easier to follow, and because I prefer a hands-on approach to learning.
-
-<a name="other"/>
-
-### Other Resources
+### Books and Blog Posts
 
 #### Andrej Karpathy's Blog Post on RNNs [link](https://goo.gl/kIzxwg)
 
@@ -139,3 +130,44 @@ from start to finish, but they were all used up to a point.
 *   Has links to code for an RNN with LSTM units, but it is written using Lua.
 *   Other great examples of stuff generated with RNNs can be found in the
     comments.
+
+#### The Deep Learning Textbook [link](http://www.deeplearningbook.org)
+
+*   Authors: Ian Goodfellow, Yoshua Bengio, Aaron Courville
+*   This is an in-depth look at Deep Learning and various Deep Neural Network
+    Models.
+*   It is pretty heavy reading, and generally hard to follow, at least from the
+    perspective of an undergrad with almost no Machine Learning experience.
+*   I switched from the book to the tutorials pretty early because they were
+    easier to follow, and because I prefer a hands-on approach to learning.
+
+#### Understanding LSTM Networks [link](https://goo.gl/pknkFU)
+
+*   Author: Christopher Olah
+*   A blogposts explaining LSTMs, and other methods to reduce problem of
+    learning long-term-dependencies on RNNs.
+*   It has some good diagrams to go along with the explanations, as well as
+    links to relevant research papers and other resources.
+
+<a name="other"/>
+
+### Other Resources
+
+#### Coursera's Machine Learning Course [link](https://goo.gl/XhLwLv)
+
+*   Author: Andrew Ng
+*   Coursera's Machine Learning course, which can be taken for free, teaches
+    various machine learning concepts and algorithms using MATLAB's free
+    alternative: Octave.
+*   I took the free version of the course, and followed it until the Neural
+    Networks chapters.
+*   I found Octave more tedious than python, and Theano abstracts a lot of the
+    operations that had to be implemented manually in Octave.
+
+#### Udacity's Intro to Machine Learning Course [link](https://goo.gl/QkrKqg)
+
+*   Authors: Katie Malone and Sebastian Thrun
+*   This course taught how to use python with numpy to write various machine
+    learning functions.
+*   It was a good course, but I only followed it through half of the Support
+    Vector Machines chapter, since it had nothing on Neural Networks.
