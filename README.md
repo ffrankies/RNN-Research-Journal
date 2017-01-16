@@ -71,6 +71,29 @@ This project's objectives are, in relative order:
 *   Updated journal with all the resources used up to this point (that I could
     remember)
 
+### Jan 15 2017
+
+*   Found a new resource - a github post by Karpathy on more efficient
+    gradient descent.
+*   Takeaways:
+    *   Use Nesterov Momentum / Adam to optimize gradient descent (might want
+        to try using RMSPROP first, since that is demonstrated in the blog).
+    *   To test whether gradient descent works, attempt to achieve 100%
+        accuracy on a small sample of data.
+*   Found another resource - a blog post by Sebastian Ruder on word embeddings.
+*   Takeaways:
+    *   Word embedding is the practice of reducing the vocabulary of a
+        language model to a vector of a smaller dimension that represents the
+        any given word in the vocabulary.
+    *   Essentially, it is another layer inside the neural network that
+        represents any given word with a vector.
+    *   This can either be trained together with the network, as the initial
+        layer (thereby adding a new layer to the network, thus significantly
+        slowing down training), or pre-trained.
+    *   Training in tandem with the network makes the word embeddings more
+        specific to the task at hand, while pre-trained word embeddings
+        increase the accuracy of the model without a high training time cost.
+
 ---
 
 <a name="resources"/>
@@ -148,6 +171,28 @@ from start to finish, but they were all used up to a point.
     learning long-term-dependencies on RNNs.
 *   It has some good diagrams to go along with the explanations, as well as
     links to relevant research papers and other resources.
+
+#### Gradient Descent Notes [link](https://goo.gl/ItqfGz)
+
+*   Author: Andrej Karpathy
+*   These appear to be notes for a Standford Deep Learning Class.
+*   Contains information for optimizing gradient descent, as well as tips
+    for picking hyperparameters and testing that the gradient descent works.
+*   Advises to train 'model ensembles' - a number of independent models whose
+    predictions are averaged at test time. This has some computational cost,
+    but can also improve network accuracy, especially when a variety of models
+    is used.
+
+#### On Word Embeddings [link](http://sebastianruder.com/word-embeddings-1/)
+
+*   Author: Sebastian Ruder
+*   This is a two-part blogpost essentially summarizing various research into
+    word embeddings.
+*   Explains what word embeddings are and what they are used for, providing
+    mathematical equations when necessary.
+*   Explains how word embedding layers for various natural language processing
+    tasks are trained, including a table comparing the different methods on
+    efficiency and performance on small and large vocabulary datasets.
 
 <a name="other"/>
 
