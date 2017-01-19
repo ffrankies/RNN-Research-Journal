@@ -94,6 +94,15 @@ This project's objectives are, in relative order:
         specific to the task at hand, while pre-trained word embeddings
         increase the accuracy of the model without a high training time cost.
 
+### Jan 18 2017
+
+*   Started creation of a testing suite for the models.
+*   Attempting to change how logging is done in my Neural Networks, by
+    switching from print statements to the python logging module.
+*   Attempted to install g++ through cygwin to speed up theano implementations,
+    got a long traceback error that I couldn't make sense of. Removed g++.exe
+    path from environment PATH variable, error did not return. 
+
 ---
 
 <a name="resources"/>
