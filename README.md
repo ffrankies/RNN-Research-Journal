@@ -101,7 +101,16 @@ This project's objectives are, in relative order:
     switching from print statements to the python logging module.
 *   Attempted to install g++ through cygwin to speed up theano implementations,
     got a long traceback error that I couldn't make sense of. Removed g++.exe
-    path from environment PATH variable, error did not return. 
+    path from environment PATH variable, error did not return.
+
+### Jan 19 2017
+
+*   Worked on test suite. It performs operations on multiple networks
+    simultaneously by utilizing multiple threads.
+*   Test suite should now be able to test whether gradient descent works,
+    train networks and generate sentences from the networks.
+*   Test suite is only partially tested, but appears to work as expected.
+*   Logging using the python logging module works as expected as well.
 
 ---
 
