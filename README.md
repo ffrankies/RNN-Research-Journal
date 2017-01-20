@@ -112,6 +112,21 @@ This project's objectives are, in relative order:
 *   Test suite is only partially tested, but appears to work as expected.
 *   Logging using the python logging module works as expected as well.
 
+### Jan 20 2017
+
+*   Coded up another RNN, that implements both GRU hidden units and the Adam
+    algorithm for gradient descent. Cannot test at this time.
+*   I chose Adam over RMSPROP, which was used in the tutorial, because the
+    source listed in the tutorial recommended it over the other methods.
+*   The Adam algorithm should make gradient descent converge to optimum values
+    much quicker than before.
+*   Reservation 1 - Adam introduces a lot of new parameters to the network,
+    which makes network models take up much more space
+*   Reservation 2 - There are much more parameters to update, and more matrix
+    operations, so while the network might converge to optimum parameter values
+    in fewer iterations/epochs, chances are each epoch will take longer to
+    train.
+
 ---
 
 <a name="resources"/>
