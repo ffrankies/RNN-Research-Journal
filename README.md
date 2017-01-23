@@ -127,6 +127,17 @@ This project's objectives are, in relative order:
     in fewer iterations/epochs, chances are each epoch will take longer to
     train.
 
+### Jan 22 2017
+
+*   Added code for RNN with Adam to save new parameters as well
+    during training.
+*   Started to enable command line arguments for the test suite using the
+    argparse module.
+*   Minimum goal here is to be able to specify which tests to carry out and
+    which RNNs to carry them out on using command line arguments.
+*   Optimum goal is to be able to specify a json config file that includes
+    RNN hyperparameters as well. 
+
 ---
 
 <a name="resources"/>
