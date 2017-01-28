@@ -181,7 +181,7 @@ This project's objectives are, in relative order:
     the model has trained on 10,000,000 examples. Started a new run to see if
     the error will be replicated.
 *   Ran a gradient descent test on 20 examples, trying to get the loss to go to
-    0. After running for 1000 epochs, the loss only decreased from 8.98 to
+    0\. After running for 1000 epochs, the loss only decreased from 8.98 to
     7.02. This is less than the decrease on the full dataset of ~1,000,000
     examples in 8 epochs (from 5.38 to 4.98). NOTE: the first value in both of
     these cases was calculated after the first epoch was done training.
