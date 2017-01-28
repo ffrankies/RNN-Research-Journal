@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+RNN-Research-Journal	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^# RNN-Research-Journal$/;"	function	line:1
+Table of Contents	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^## Table of Contents$/;"	function	line:8
+Objectives	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^## Objectives$/;"	function	line:18
+Learning Outcomes	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Learning Outcomes$/;"	function	line:22
+Coding Milestones	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Coding Milestones$/;"	function	line:30
+Other	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Other$/;"	function	line:46
+Log	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^## Log$/;"	function	line:53
+Jan 09 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 09 2017$/;"	function	line:55
+Jan 10 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 10 2017$/;"	function	line:64
+Jan 13 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 13 2017$/;"	function	line:69
+Jan 15 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 15 2017$/;"	function	line:74
+Jan 18 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 18 2017$/;"	function	line:97
+Jan 19 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 19 2017$/;"	function	line:106
+Jan 20 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 20 2017$/;"	function	line:115
+Jan 22 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 22 2017$/;"	function	line:130
+Jan 23 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 23 2017$/;"	function	line:141
+Jan 24 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 24 2017$/;"	function	line:156
+Jan 28 2017	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Jan 28 2017$/;"	function	line:173
+Resources	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^## Resources$/;"	function	line:183
+Tutorials	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Tutorials$/;"	function	line:191
+WildML RNN Tutorial [link](http://goo.gl/gHSQYm)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### WildML RNN Tutorial [link](http:\/\/goo.gl\/gHSQYm)$/;"	function	line:196
+Basic Theano Tutorial [link](http://goo.gl/TN8qVD)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Basic Theano Tutorial [link](http:\/\/goo.gl\/TN8qVD)$/;"	function	line:206
+Deep Learning with Theano Tutorial [link](http://goo.gl/mp5zMA)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Deep Learning with Theano Tutorial [link](http:\/\/goo.gl\/mp5zMA)$/;"	function	line:215
+Books and Blog Posts	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Books and Blog Posts$/;"	function	line:226
+Andrej Karpathy's Blog Post on RNNs [link](https://goo.gl/kIzxwg)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Andrej Karpathy's Blog Post on RNNs [link](https:\/\/goo.gl\/kIzxwg)$/;"	function	line:228
+The Deep Learning Textbook [link](http://www.deeplearningbook.org)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### The Deep Learning Textbook [link](http:\/\/www.deeplearningbook.org)$/;"	function	line:239
+Understanding LSTM Networks [link](https://goo.gl/pknkFU)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Understanding LSTM Networks [link](https:\/\/goo.gl\/pknkFU)$/;"	function	line:249
+Gradient Descent Notes [link](https://goo.gl/ItqfGz)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Gradient Descent Notes [link](https:\/\/goo.gl\/ItqfGz)$/;"	function	line:257
+On Word Embeddings [link](http://sebastianruder.com/word-embeddings-1/)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### On Word Embeddings [link](http:\/\/sebastianruder.com\/word-embeddings-1\/)$/;"	function	line:268
+Other Resources	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^### Other Resources$/;"	function	line:281
+Coursera's Machine Learning Course [link](https://goo.gl/XhLwLv)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Coursera's Machine Learning Course [link](https:\/\/goo.gl\/XhLwLv)$/;"	function	line:283
+Udacity's Intro to Machine Learning Course [link](https://goo.gl/QkrKqg)	C:\Users\Frank\Documents\Machine Learning\Deep Learning\RNN-Research-Journal\README.md	/^#### Udacity's Intro to Machine Learning Course [link](https:\/\/goo.gl\/QkrKqg)$/;"	function	line:294

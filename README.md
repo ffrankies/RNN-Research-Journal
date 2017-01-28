@@ -136,7 +136,45 @@ This project's objectives are, in relative order:
 *   Minimum goal here is to be able to specify which tests to carry out and
     which RNNs to carry them out on using command line arguments.
 *   Optimum goal is to be able to specify a json config file that includes
-    RNN hyperparameters as well. 
+    RNN hyperparameters as well.
+
+### Jan 23 2017
+
+*   Gained access to seawolf.
+*   Installed tmux locally as an alternative to using nohup.
+*   Got working tmux installation instructions [here](https://goo.gl/Tn1TfV)
+*   Installed anaconda version 4.2.9 for python 3.5 and other libraries.
+*   Running Theano with either python 3.5 or 2.7 gives a 5000+ line warning,
+    but appears to work anyway. Error did not show up on previous os.
+*   Restructured the way updates were made in sgd_step in the Adam RNN
+    implementation. Starting to think that using subtensors wasn't such a good
+    idea - code looks unnecessarily verbose.
+*   Got errors when using the testSuite. Could not get error to go down to 0 on
+    models. AdamRNN failed testing of gradient descent, but for some reason is
+    the only network that is training on full dataset.
+
+### Jan 24 2017
+
+*   Focusing on VanillaRNN and the test suite.
+*   AdamRNN still training on first epoch at 20:29 - so it takes over a day to
+    train a single epoch. Might have to switch to Nesterov Momentum instead.
+*   Started training a VanillaRNN for 10 epochs. Training happening relatively
+    slowly.
+*   Ran the GPU test available in the theano documentation, and it turns out
+    the GPU optimization is not working.
+*   With THEANO_FLAGS=device=gpu, I get the errors:
+    -   ERROR (theano.sandbox.cuda): Failed to compile cuda_ndarray.cu: ...
+    -   ERROR (theano.sandbox.cuda): CUDA is installed, but device gpu is not
+        available.
+*   With THEANO_FLAGS=device=cuda, I get the error:
+    -   ERROR (theano.sandbox.cuda): pygpu was configured but could not be
+        imported.
+
+### Jan 28 2017
+
+*   May have figured out why error wasn't going down when using training suite:
+    I changed the number of examples used to 20, but left patience at 100000.
+    
 
 ---
 
