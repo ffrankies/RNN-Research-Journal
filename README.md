@@ -186,6 +186,55 @@ This project's objectives are, in relative order:
     examples in 8 epochs (from 5.38 to 4.98). NOTE: the first value in both of
     these cases was calculated after the first epoch was done training.
 
+### Jan 30 2017
+
+*   May have fixed the gpu error by adding a .theanorc file in home directory
+    with the following information: (suggested by Adam)
+    """
+    [global]
+    floatX = float32
+    device = gpu0
+
+    [lib]
+    cnmem = 0
+
+    [nvcc]
+    flags=-D_FORCE_INLINES
+    """
+*   Ran theano's GPU test, output read "used the GPU".
+*   Ended Vanilla RNN running on cpu, started new runs of both the GRU-RNN and
+    Vanilla RNN on GPU. Both runs set for 10 epochs.
+*   Added support for specifying the number of epochs and patience for training
+    the GRU RNN.
+
+### Feb 04 2017
+
+*   Both the Vanilla RNN and GRU-RNN completed their runs on Feb 03 2017.
+*   The Vanilla RNN training broke with a segmentation fault once again, while
+    calculating the categorical crossentropy loss after the last epoch. The
+    loss on the previous epoch was ~4.95.
+*   The GRU-RNN completed with a couple minor issues. I forgot to separate
+    the output by date on which each run started, and the sentences get appended
+    to ./sentencessentences.txt instead of to ./sentences/sentences.txt.
+*   Results of GRU-RNN make more sense than the results from earlier Vanilla
+    RNN runs. In the Vanilla RNN runs, only really short sentences like "Good
+    luck!", "Thank you!" and some profanities made sense, while the GRU run had
+    output like "You sound really irrational.", "I agree with this." and
+    "Morality is a wonderful thing!".
+*   Sentences produced are still on the short side, and it took over 500
+    attempts to produce 100 sentences 4 words or longer.
+*   Interestingly, the loss on the 10th epoch was ~4.86, which isn't much
+    better than the loss in the Vanilla RNN, despite the better results.
+*   Both RNNs were also very CPU-heavy (judging by the output of the 'top'
+    command), and the training took longer than I expected it to, so either
+    they weren't running on the GPU, or running two models simultaneously takes
+    more resources than I expected.
+*   Added code to fix minor RNN problems, and added same functionality to
+    AdamRNN.
+*   Started an instance of AdamRNN. Expected running time = ~4 days.
+*   Started work on an RNN that uses Nesterov's momentum algorithm instead of
+    the Adam algorithm for gradient descent.
+
 ---
 
 <a name="resources"/>
