@@ -235,6 +235,31 @@ This project's objectives are, in relative order:
 *   Started work on an RNN that uses Nesterov's momentum algorithm instead of
     the Adam algorithm for gradient descent.
 
+### Feb 05 2017
+
+*   AdamRNN's loss calculation after training is faulty. Displays values of NaN,
+    but keeps on training.
+*   According to the [theano nan tutorial](https://goo.gl/d2gpHl), values of
+    NaN are frequently encountered due to poor hyperparameter initialization.
+*   Reddit user suggests using small datasets to figure out optimal learning
+    rates in [this post](https://goo.gl/A85TTK).
+*   Set .theanorc mode to NanGuardMode, which should print out where the NaN
+    is when it occurs and exit with an error.
+*   Fixed an IndexError by specifying type of 'max' command line argument.
+*   Fixed a bad argument error by removing unnecessary parameter from calls to
+    self.sgd_step in adamrnn and grurnn.
+*   Running a test on adamrnn with learning rate of 0.005 and a dataset of 20
+    examples to see if the NaN error persists. Test set to run for 2000 epochs.
+*   Test fails after about 8/9 epochs, during which the loss jumps around quite
+    a bit (from >8 to >7 to >6 to >8 to >7 to >8), NanGuardMode error says a
+    big number detected sometime during gradient descent.
+*   Large AdamRNN still running, I'm curious about the output after 10 epochs.
+*   May have figured out where the Big numbers are coming from. The Adam
+    'momentum' and 'velocity' parameters (or at leat, I'm assuming that's what
+    they are called) are initialized to zero. This may be creating large
+    numbers during the theano scan updates, which may in turn contribute to
+    NaNs later on. 
+
 ---
 
 <a name="resources"/>
