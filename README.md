@@ -9,6 +9,8 @@ progress and the resources I use.
 
 *   [Objectives](#objectives)
 *   [Log](#log)
+    *   [January 2017](#log.Jan17)
+    *   [February 2017](#log.Feb17)
 *   [Resources](#resources)
 
 ---
@@ -51,6 +53,8 @@ This project's objectives are, in relative order:
 <a name="log"/>
 
 ## Log
+
+<a name="log.Jan17"/>
 
 ### Jan 09 2017
 
@@ -207,6 +211,8 @@ This project's objectives are, in relative order:
 *   Added support for specifying the number of epochs and patience for training
     the GRU RNN.
 
+<a name="log.Feb17"/>
+
 ### Feb 04 2017
 
 *   Both the Vanilla RNN and GRU-RNN completed their runs on Feb 03 2017.
@@ -258,7 +264,46 @@ This project's objectives are, in relative order:
     'momentum' and 'velocity' parameters (or at leat, I'm assuming that's what
     they are called) are initialized to zero. This may be creating large
     numbers during the theano scan updates, which may in turn contribute to
-    NaNs later on. 
+    NaNs later on.
+
+### Feb 06 2017
+
+*   Added missing parameter correction code for the AdamRNN.
+*   Starting new RNN run on 20 examples with a learning rate of 0.005, running
+    for 20 epochs.
+*   With the parameter corrections, NanGuardMode detects abnormally large
+    numbers after only 1 epoch. I suspect my functions are implemently wrong.
+*   Using a try catch and a print statement, managed to isolate the 'Big'
+    numbers to the momentum tensors, but the only reason I can think of for
+    there to be large momentum tensors is if the gradients calculated are huge.
+*   Ater more tests and code refactoring, figured out that the 'big' values are
+    caused by the second momentum vectors - the ones with the v_ prefix.
+*   Still unsure as to why that happens.
+
+### Feb 07 2017
+
+*   Still working on fixing NaNs.
+*   Found github gists and StackOverflow posts with implementations of the
+    Adam algorithm, attempting to use them in my code.
+*   Gists did not help. NanGuardMode still catches 'Big' values.
+*   Latest implementation causes error to shoot up before NanGuardMode catches
+    'Big' values.
+*   The AdamRNN that was producing NaNs during training did not output any
+    sentences - the tmux terminal for it says process was killed.
+
+### Feb 10 2017
+
+*   Started a test on the GRU-RNN with 2000 epochs, to make sure the NaNs are
+    solely a product of the AdamRNN.
+*   Stepping back from the Adam algorithm, working on implementing a new RNN
+    model that uses the RMSprop algorithm instead.
+*   Added function prototype that checks the ratio of updates to weights
+    during training. The results are supposed to be ~0.001. Values below or
+    above this would signify a learning rate that is too low or too high,
+    respectively. Suggestion gotten from Karpathy's class notes.
+*   Added option for learning rate to not be annealed during training. On
+    small datasets, annealing the learning rate (or annealing the learning rate
+    too soon) leads to microscopic changes to the loss during gradient descent.
 
 ---
 
