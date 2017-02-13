@@ -305,6 +305,22 @@ This project's objectives are, in relative order:
     small datasets, annealing the learning rate (or annealing the learning rate
     too soon) leads to microscopic changes to the loss during gradient descent.
 
+### Feb 12 2017
+
+*   Added option to not anneal grurnn's learning rate.
+*   Started a new GRU-RNN test.
+*   Completed the RMSprop RNN, ran tests, still getting losses of NaN after
+    first training, and NanGuardMode is finding Big numbers.
+*   Added functions and parameters to examine where the NaNs might be
+    generated, and everything looks to be fine. The gradients all look to be
+    < 1, the RMSprop updates for the bias get as high as 5.6, but everything
+    else appears to be < 1 as well.
+*   Named as many functions as I could, the function that appears the most in
+    the error message is forward_propagate, but after catching the error,
+    forward_propagate works fine. The other function appears to
+    CrossentropyCategorical1HotGrad, which is an internal function, and I'm not
+    entirely sure where it's called because of how Theano works.
+
 ---
 
 <a name="resources"/>
