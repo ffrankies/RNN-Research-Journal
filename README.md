@@ -321,6 +321,19 @@ This project's objectives are, in relative order:
     CrossentropyCategorical1HotGrad, which is an internal function, and I'm not
     entirely sure where it's called because of how Theano works.
 
+### Feb 14 2017
+
+*   Gained access to quattro.
+*   Started training new Vanilla RNN - program printed out that it is using
+    the GPU.
+*   Program taking longer than I expect to train - over an hour per 100,000
+    examples, as opposed to 30 minutes per 100,000 examples on seawolf.
+*   Run a short RMSprop RNN with 20 examples - did not get any NaNs. The loss
+    however shot up from ~8.9 to over 200 in the first epoch, and then
+    gradually decreased to about 70, where it stayed for over a 1000 epochs. I
+    am guessing that this is because there weren't enough examples to cover
+    the vocabulary.
+
 ---
 
 <a name="resources"/>
