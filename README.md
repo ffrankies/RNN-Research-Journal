@@ -334,6 +334,16 @@ This project's objectives are, in relative order:
     am guessing that this is because there weren't enough examples to cover
     the vocabulary.
 
+### Feb 17 2017
+
+*   Checked up on Vanilla RNN training on quattro. Still on the fourth epoch.
+*   Turns out that I did not add some of the flags that I should have added
+    when running the command.
+*   Added a bash function called theano( )that runs the program on a selected
+    gpu with the given parameters.
+*   Run Vanilla RNN with the bash function, hoping for faster training time.
+*   Vanilla RNN now training at <30mins per 100,000 examples.
+
 ---
 
 <a name="resources"/>
