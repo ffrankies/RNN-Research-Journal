@@ -339,10 +339,19 @@ This project's objectives are, in relative order:
 *   Checked up on Vanilla RNN training on quattro. Still on the fourth epoch.
 *   Turns out that I did not add some of the flags that I should have added
     when running the command.
-*   Added a bash function called theano( )that runs the program on a selected
+*   Added a bash function called theano() that runs the program on a selected
     gpu with the given parameters.
 *   Run Vanilla RNN with the bash function, hoping for faster training time.
 *   Vanilla RNN now training at <30mins per 100,000 examples.
+
+### Feb 19 2017
+
+*   Added an RNN model with word embeddings.
+*   Tested it on Quattro, got NaNs again.
+*   Tested RMSprop RNN on Quattro, got NaNs.
+*   Looked for the exact file I used before, but it was overwritten through
+    an atom plugin. All I remember adding is a 'prototype' method for using
+    a seed for generating sentences. 
 
 ---
 
