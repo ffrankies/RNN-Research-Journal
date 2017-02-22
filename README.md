@@ -351,7 +351,21 @@ This project's objectives are, in relative order:
 *   Tested RMSprop RNN on Quattro, got NaNs.
 *   Looked for the exact file I used before, but it was overwritten through
     an atom plugin. All I remember adding is a 'prototype' method for using
-    a seed for generating sentences. 
+    a seed for generating sentences.
+
+### Feb 21 2017
+
+*   Vanilla RNN is still training, on the 19th epoch at 22 p.m. Last recorded
+    loss is 4.89
+*   Decided to step back from dealing with NaNs and work on formatting data.
+*   Created data_utils.py. It will be built on top of the older format-data.py
+*   The immediate goal is to be able to change how much of the csv data is used
+    in creating the dataset (in other words, controlling the size of the
+    training dataset)
+*   The longer-term goal is to be able to get the formatter to handle paragraphs
+    and whole comments/stories as training input, as opposed to single
+    sentences. The idea is that this way the RNN will be able to train on
+    longer inputs, and therefore produce longer outputs.
 
 ---
 
