@@ -367,6 +367,23 @@ This project's objectives are, in relative order:
     sentences. The idea is that this way the RNN will be able to train on
     longer inputs, and therefore produce longer outputs.
 
+### Feb 25 2017
+
+*   Used kaggle.com to download a csv dataset of short stories from the
+    WritingPrompts subreddit submitted in May 2015. Dataset contains 10069
+    comments (stories), 461275 sentences (so about 46 sentences per story),
+    and over 104,000 unique words.
+*   Tested data_utils.py - had an error with file encodings
+*   Installed anaconda 4.3.8 locally in order to replicate environment of my
+    laptop (my intuition was that python3 handles encodings better).
+*   With python3, (v3.6.0), encoding error did not show up.
+*   Tested main functionality of data_utils.py - it now appears to correctly
+    save and load datasets.
+*   Tried creating a small dataset - it appears as if everything words as
+    expected.
+*   Created a small dataset called test.pkl - it contains 20 sentences and
+    a vocabulary of 100 words (including special tokens).
+
 ---
 
 <a name="resources"/>
