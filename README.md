@@ -367,6 +367,15 @@ This project's objectives are, in relative order:
     sentences. The idea is that this way the RNN will be able to train on
     longer inputs, and therefore produce longer outputs.
 
+### Feb 22 2017
+
+*   Vanilla RNN finished training for 20 epochs. No error found.
+*   Final cross-entropy loss: ~4.89
+*   Took 474 attempts to produce 100 'valid' sentences (valid here being longer
+    than 3 words long).
+*   Results are comparable to the GRU RNN that ran for 10 epochs (see log entry
+    from Feb 03).
+
 ### Feb 25 2017
 
 *   Used kaggle.com to download a csv dataset of short stories from the
@@ -383,6 +392,19 @@ This project's objectives are, in relative order:
     expected.
 *   Created a small dataset called test.pkl - it contains 20 sentences and
     a vocabulary of 100 words (including special tokens).
+
+### Feb 26 2017
+
+*   Ran some tests using the small dataset on the VanillaRNN.
+*   The loss jumped around a lot, which caused the learning rate to be annealed
+    too quickly - fixed that by setting a minimum of 0.0001 for the learning
+    rate.
+*   Also set the truncate value to 1000 (that should mean that the gradient
+    calculation would go over all words in each sentence), and the size of the
+    hidden layer to 50.
+*   Using the above setting, over 5000 epochs and with an initial learning rate
+    of 0.05, I got the loss to go to ~0.237. It would probably eventually go to
+    0 if it could train for longer.
 
 ---
 
