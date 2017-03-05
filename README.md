@@ -11,6 +11,7 @@ progress and the resources I use.
 *   [Log](#log)
     *   [January 2017](#log.Jan17)
     *   [February 2017](#log.Feb17)
+    *   [March 2017](#log.Mar17)
 *   [Resources](#resources)
 
 ---
@@ -405,6 +406,22 @@ This project's objectives are, in relative order:
 *   Using the above setting, over 5000 epochs and with an initial learning rate
     of 0.05, I got the loss to go to ~0.237. It would probably eventually go to
     0 if it could train for longer.
+
+<a name="log.Mar17"/>
+
+### Mar 04 2017
+
+*   Created a test file for running a test on the GRU-RNN with the test
+    dataset.
+*   Fixed a few minor problems - changed '== None' to 'is None' because of a
+    future warning (== None will result in an elementwise comparison in the
+    future), changed anneal in the GRU-RNN to a float value representing the
+    smalles the learning rate is allowed to get, instead of a boolean value.
+*   Started a 5000 epoch test similar to the one ran previously on the Vanilla
+    RNN, but with an anneal value of 0.00001.
+*   After training for 5000 epochs (which took 34.79 minutes), the RNN produced
+    a loss of 0.390395. It may be higher than in the Vanilla RNN, but that's
+    most likely because of the smaller anneal size.
 
 ---
 
