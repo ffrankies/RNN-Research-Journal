@@ -423,6 +423,21 @@ This project's objectives are, in relative order:
     a loss of 0.390395. It may be higher than in the Vanilla RNN, but that's
     most likely because of the smaller anneal size.
 
+### Mar 06 2017
+
+*   Worked on data_utils.py, to create a dataset that will contain paragraphs
+    as examples instead of single sentences.
+*   This was done by using python's regex library ('re') to split comments on
+    the regex expression '\n+'.
+*   Tested script by making a dataset of paragraphs called paragraphs.pkl,
+    from the same raw data of reddit comments. The resulting dataset contained
+    173645 paragraphs.
+*   Added functionality for saving stories as datasets. This was done assuming
+    that each whole comment was a story on its own.
+*   Tested script by making a dataset of stories called stories.pkl, again
+    from the same raw data. Stories dataset contains 10069 stories.
+*   Both paragraphs and stories appear to function properly.
+
 ---
 
 <a name="resources"/>
