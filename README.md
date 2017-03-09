@@ -438,6 +438,28 @@ This project's objectives are, in relative order:
     from the same raw data. Stories dataset contains 10069 stories.
 *   Both paragraphs and stories appear to function properly.
 
+### Mar 07 2017
+
+*   Used the Vanilla-RNN to test loading a previously pickled model. Test
+    failed for two reasons, as far as I can tell:
+    *   First, pickling in python2 and python3 apparently works differently, so
+        files pickled in python2 cannot be easily unpickled in python3, and
+        vice-versa.
+    *   Second, the pickled object was not a theano.shared variable, but
+        rather a CudaNdarray.
+*   Worked on getting loading and saving of models to work properly.
+
+### Mar 08 2017
+
+*   Tested loading and saving of models by training a test GRU RNN for 10
+    epochs on the test dataset, and then loading the model and generating
+    sentences with it, using python3.
+*   Loading/saving appears to be in working order.
+*   Added functionality for producing paragraphs and stories with the GRU RNN.
+*   Adding saving of a plot of loss against epoch/iteration on the GRU RNN.
+*   Started a 20-epoch python3 test on the GRU RNN to see how it fares
+    when producing stories from the stories.pkl dataset.
+
 ---
 
 <a name="resources"/>
