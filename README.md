@@ -460,6 +460,47 @@ This project's objectives are, in relative order:
 *   Started a 20-epoch python3 test on the GRU RNN to see how it fares
     when producing stories from the stories.pkl dataset.
 
+### Mar 09 2017
+
+*   Training complete. Training took just over 20 hours, with a final loss of
+    about 6.35. Training got interrupted by something just before it started
+    producing sentences. I don't think it's a bug in the code, because the
+    tmux session I was running on vanished as well. Might have been a power
+    outage. The interruption also prevented the loss graph from being saved.
+*   I manually used the last generated model to generate stories, but all it
+    produced was mid-length sentences that didn't make much sense. They were
+    generally longer than the ones produced with the sentences dataset, however.
+    My intuition is that the truncate value of 4 cut off the dependencies too
+    short, which prevented the RNN from looking too far back to guess the next
+    word.
+*   The final loss is also higher than in the earlier datasets, my guess is that
+    it is a combination of
+    i)   The stories being longer, making the next word harder to determine.
+    ii)   The short turncate value, which would affect accuracy of predictions.
+    iii)    The dataset containing fewer words and sentences than the previous
+            dataset, so the actual number of examples gone over is smaller.
+*   Started a new test on the GRU RNN with a truncate value of 500 to see
+    if that will change anything.
+
+### Mar 10 2017
+
+*   Found some problems with training with a truncate value of 500:
+    i)   The training time jumped from 30 mins per epoch to 5 hours per epoch.
+    ii)   Loss calculation still took 30 mins, but the loss came out to nan
+          once again. I suspect that the problem is not so much that gradient
+          descent is failing, but that the loss function is inappropriate for
+          this purpose.
+    iii)   Manually producing stories to see what's happening did not quite
+           work - the python program got stuck on generating the first story.
+*   Probable fix: changing the loss function used, and lowering the truncate
+    value to around 50.
+*   Changed the loss function to binary crossentropy (it's pretty much the
+    same as the negative log likelihood used in the LISA lab tutorials), and
+    started a new GRU RNN run with a truncate value of 50. Failed almost
+    immediately as the function is not suitable for this form of data.
+*   Reverted back to teh categorical crossentropy function and started a new
+    GRU RNN run with a truncate value of 50.
+
 ---
 
 <a name="resources"/>
