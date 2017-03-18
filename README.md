@@ -475,9 +475,9 @@ This project's objectives are, in relative order:
     word.
 *   The final loss is also higher than in the earlier datasets, my guess is that
     it is a combination of
-    **i)**   The stories being longer, making the next word harder to determine.
-    **ii)**   The short turncate value, which would affect accuracy of predictions.
-    **iii)**    The dataset containing fewer words and sentences than the previous
+    *   The stories being longer, making the next word harder to determine.
+    *   The short turncate value, which would affect accuracy of predictions.
+    *   The dataset containing fewer words and sentences than the previous
             dataset, so the actual number of examples gone over is smaller.
 *   Started a new test on the GRU RNN with a truncate value of 500 to see
     if that will change anything.
@@ -485,13 +485,13 @@ This project's objectives are, in relative order:
 ### Mar 10 2017
 
 *   Found some problems with training with a truncate value of 500:
-    **i)**   The training time jumped from 30 mins per epoch to 5 hours per epoch.
-    **ii)**   Loss calculation still took 30 mins, but the loss came out to nan
-          once again. I suspect that the problem is not so much that gradient
-          descent is failing, but that the loss function is inappropriate for
-          this purpose.
-    **iii)**   Manually producing stories to see what's happening did not quite
-           work - the python program got stuck on generating the first story.
+    *   The training time jumped from 30 mins per epoch to 5 hours per epoch.
+    *   Loss calculation still took 30 mins, but the loss came out to nan
+        once again. I suspect that the problem is not so much that gradient
+        descent is failing, but that the loss function is inappropriate for
+        this purpose.
+    *   Manually producing stories to see what's happening did not quite
+        work - the python program got stuck on generating the first story.
 *   Probable fix: changing the loss function used, and lowering the truncate
     value to around 50.
 *   Changed the loss function to binary crossentropy (it's pretty much the
@@ -537,6 +537,42 @@ This project's objectives are, in relative order:
 *   Disabled printing out of max values, started a 1000 epoch test on the same
     dataset with a truncate value of 100, got nan values after a few epochs.
 
+### Mar 17 2017
+
+*   Ran a bunch more tests to replicate nan errors.
+*   Fixed saving of loss graph - it was previously in an unreachable location
+    (after a return statement).
+*   Tried replacing 0s with 1e-6, truncating the gradient values and weights,
+    but that didn't work.
+*   May have figured out what produced the nans:
+    *   The larger the truncate values, the smaller the probabilities of each
+        word, and the larger the weights.
+    *   nan values occur when one or more of the calculated probabilities goes
+        to zero. Categorical crossentropy performs a log calculation on the
+        probability, which produces a value of nan.
+*   To solve this, I rewrote the loss calculation, and added an epsilum (1e-6)
+    to the probabilities during loss calculation. Observations:
+    *   For smaller truncate values, adding an epsilum (1e-6) to the output
+        probabilities helps prevent nans.
+    *   With larger truncate values, the probabilities are so small (order of
+        e-20 to e-50) that adding an epsilum causes the loss to become static.
+*   Possible solution - calculate the epsilum based on the smallest output
+    probability. For example, instead of epsilum, use the smallest non-zero
+    output, or figure out a way to regularize the output before it is used in
+    the loss calculation.
+    *   The softmax function squashes values to between 0 and 1, perhaps it is
+        possible to use a similar function that squashes values betwen 0.0000001
+        and 1, or something similar.
+*   Not sure if this is a bad thing or not, but I'm finding that the sum of
+    all probabilities comes out to a large number (650+, when using a truncate
+    value of 5 and an epsilum of 1e-6). This may just be because the output is
+    saved for every word in the story.
+*   Joined a theano users google group in case I run into more problems. Some
+    webpages that turned out to be useful for this troubleshooting:
+    *   https://groups.google.com/forum/#!topic/theano-users/yYamb7IcOOQ
+    *   https://groups.google.com/forum/#!forum/theano-users
+    *   https://goo.gl/pBjolN
+    *   http://deeplearning.net/software/theano/library/tensor/basic.html
 
 
 ---
