@@ -475,9 +475,9 @@ This project's objectives are, in relative order:
     word.
 *   The final loss is also higher than in the earlier datasets, my guess is that
     it is a combination of
-    i)   The stories being longer, making the next word harder to determine.
-    ii)   The short turncate value, which would affect accuracy of predictions.
-    iii)    The dataset containing fewer words and sentences than the previous
+    **i)**   The stories being longer, making the next word harder to determine.
+    **ii)**   The short turncate value, which would affect accuracy of predictions.
+    **iii)**    The dataset containing fewer words and sentences than the previous
             dataset, so the actual number of examples gone over is smaller.
 *   Started a new test on the GRU RNN with a truncate value of 500 to see
     if that will change anything.
@@ -485,12 +485,12 @@ This project's objectives are, in relative order:
 ### Mar 10 2017
 
 *   Found some problems with training with a truncate value of 500:
-    i)   The training time jumped from 30 mins per epoch to 5 hours per epoch.
-    ii)   Loss calculation still took 30 mins, but the loss came out to nan
+    **i)**   The training time jumped from 30 mins per epoch to 5 hours per epoch.
+    **ii)**   Loss calculation still took 30 mins, but the loss came out to nan
           once again. I suspect that the problem is not so much that gradient
           descent is failing, but that the loss function is inappropriate for
           this purpose.
-    iii)   Manually producing stories to see what's happening did not quite
+    **iii)**   Manually producing stories to see what's happening did not quite
            work - the python program got stuck on generating the first story.
 *   Probable fix: changing the loss function used, and lowering the truncate
     value to around 50.
@@ -500,6 +500,44 @@ This project's objectives are, in relative order:
     immediately as the function is not suitable for this form of data.
 *   Reverted back to teh categorical crossentropy function and started a new
     GRU RNN run with a truncate value of 50.
+
+### Mar 11-15 2017
+
+*   GRU RNN with a truncate value of 50 ran into nan errors as well. This could
+    be problematic, as with lower truncate values, the network may not be able
+    to generate long stories.
+*   Created a small dataset of 20 stories to test the network on.
+*   Ran it with a truncate value of 4 (to make sure I didn't break anything
+    with the code), and no nans were generated after 300+ epochs, at which
+    point I killed the process.
+*   Testing on 20 stories took longer than I expected, with the 5000 epochs
+    taking about 10 hours to complete. Created an even smaller dataset of only
+    10 stories to reduce training time.
+*   Still haven't seen any loss graphs produced from training, which strikes me
+    as slightly odd.
+*   Tried doing a test run, making sure I save off models after each epoch, but
+    the process exited because I had exceeded my disk quota on quattro and EOS.
+
+### Mar 16 2017
+
+*   To free up space, deleted most of my earlier models, leaving just the bare
+    minimum in case I needed them later.
+*   Rewrote portion of GRU RNN code to overwrite models as they're being saved.
+    This way, only one model will ever be stored per run. Also, made the logs,
+    model and generated sentences be saved in the same directory.
+*   Ran a test on the 10 story dataset with a truncate value of 50, did not get
+    nans after 999 epochs, killed the process.
+*   Ran a test on the 10 story dataset with a truncate value of 100, got nans
+    after the 4th epoch.
+*   Modified code to print out the max and min values inside the weights,
+    weights are somehow driven to nan.
+*   Used the theano.tensor.clip function on my updates to force weight values
+    between 100 and -100. Ran a short test, after 10 epochs on the 10 story
+    dataset, all weights fell between 10 and -2.
+*   Disabled printing out of max values, started a 1000 epoch test on the same
+    dataset with a truncate value of 100, got nan values after a few epochs.
+
+
 
 ---
 
