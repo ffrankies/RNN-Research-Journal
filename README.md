@@ -498,7 +498,7 @@ This project's objectives are, in relative order:
     same as the negative log likelihood used in the LISA lab tutorials), and
     started a new GRU RNN run with a truncate value of 50. Failed almost
     immediately as the function is not suitable for this form of data.
-*   Reverted back to teh categorical crossentropy function and started a new
+*   Reverted back to the categorical crossentropy function and started a new
     GRU RNN run with a truncate value of 50.
 
 ### Mar 11-15 2017
@@ -506,13 +506,14 @@ This project's objectives are, in relative order:
 *   GRU RNN with a truncate value of 50 ran into nan errors as well. This could
     be problematic, as with lower truncate values, the network may not be able
     to generate long stories.
-*   Created a small dataset of 20 stories to test the network on.
+*   Created a small dataset of 20 stories and a vocabulary size of 300 to test
+    the network on.
 *   Ran it with a truncate value of 4 (to make sure I didn't break anything
     with the code), and no nans were generated after 300+ epochs, at which
     point I killed the process.
 *   Testing on 20 stories took longer than I expected, with the 5000 epochs
     taking about 10 hours to complete. Created an even smaller dataset of only
-    10 stories to reduce training time.
+    5 stories and a vocabulary of 200 to reduce training time.
 *   Still haven't seen any loss graphs produced from training, which strikes me
     as slightly odd.
 *   Tried doing a test run, making sure I save off models after each epoch, but
@@ -525,9 +526,9 @@ This project's objectives are, in relative order:
 *   Rewrote portion of GRU RNN code to overwrite models as they're being saved.
     This way, only one model will ever be stored per run. Also, made the logs,
     model and generated sentences be saved in the same directory.
-*   Ran a test on the 10 story dataset with a truncate value of 50, did not get
+*   Ran a test on the 5 story dataset with a truncate value of 50, did not get
     nans after 999 epochs, killed the process.
-*   Ran a test on the 10 story dataset with a truncate value of 100, got nans
+*   Ran a test on the 5 story dataset with a truncate value of 100, got nans
     after the 4th epoch.
 *   Modified code to print out the max and min values inside the weights,
     weights are somehow driven to nan.
@@ -552,8 +553,7 @@ This project's objectives are, in relative order:
         probability, which produces a value of nan.
 *   To solve this, I rewrote the loss calculation, and added an epsilum (1e-6)
     to the probabilities during loss calculation. Observations:
-    *   For smaller truncate values, adding an epsilum (1e-6) to the output
-        probabilities helps prevent nans.
+    *   Adding an epsilum (1e-6) to the output probabilities helps prevent nans.
     *   With larger truncate values, the probabilities are so small (order of
         e-20 to e-50) that adding an epsilum causes the loss to become static.
 *   Possible solution - calculate the epsilum based on the smallest output
@@ -574,6 +574,30 @@ This project's objectives are, in relative order:
     *   https://goo.gl/pBjolN
     *   http://deeplearning.net/software/theano/library/tensor/basic.html
 
+### Mar 19 2017
+
+*   Found another blog post on training deep neural networks:
+    [link](https://goo.gl/yQaeTR)
+*   Added a vocabulary size command-line option to the GRU-RNN
+*   Figured out that with a small dataset, and a small vocabulary, the
+    generate_story method gets stuck generating unknown tokens.
+*   Tried to regularize the output by changing the calculation of the error
+    from '-Sum[p{x}log(q{x})]' to '-Sum[p{x}log(q{x} + mean(q{x})/1000)]',
+    where p{x} is the real output probabilities (a one-hot vector) and q{x} is
+    the calculated output probabilities.
+*   Played around with different truncate values, it appears that the higher
+    the truncate value, the higher the chance of generating unknown tokens.
+*   Highest truncate value I could use on the 5 stories dataset without the
+    loss becoming static and the story generation getting stuck on generating
+    unknown tokens was 8.
+*   Took out clipping of weights and replacing 0 weights with 1e-6, because
+    both operations were no longer needed, but produced quite a bit of
+    overhead.
+*   Sometimes, I get an error saying that the sum of output probabilities
+    does not equal 1. A re-run generally fixes that, for some reason.
+*   Started a new test run on the large story dataset, using a truncate value
+    of 50, to see whether the same situation would be replicated on the large
+    dataset.
 
 ---
 
@@ -674,6 +698,19 @@ from start to finish, but they were all used up to a point.
 *   Explains how word embedding layers for various natural language processing
     tasks are trained, including a table comparing the different methods on
     efficiency and performance on small and large vocabulary datasets.
+
+#### Why Are Deep Neural Networks Hard to Train? [link](https://goo.gl/yQaeTR)
+
+*   Author: Michael Nielsen
+*   In summary, says that deep neural networks are harder to train because of
+    the vanishing and exploding gradients, which result from the gradients in
+    deep neural networks being unstable.
+*   Showed that as you add more layers to a network, the performance follows a
+    somewhat parabolic shape (f(x) = ax^2 where a < 0, or an upside-down u
+    shape). That is, there is a point where adding more layers decreases the
+    performance of the network.
+*   Part of this is because the lower layers (closer to input layer) train much
+    more slowly than the higher layers (closer to output layer).
 
 <a name="other"/>
 
