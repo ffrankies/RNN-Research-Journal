@@ -599,6 +599,49 @@ This project's objectives are, in relative order:
     of 50, to see whether the same situation would be replicated on the large
     dataset.
 
+### Mar 20 2017
+
+*   The loss on the test run went up to 15.18 by the end of the second training
+    epoch, and remained there until training finished (the 10th epoch).
+*   Had a few ideas suggested to me:
+    *   For dealing with nans, Prof. Wolffe suggested modifying the log
+        function used in calculating the loss such that log(0) = 0. This may
+        affect the accuracy of the loss function, however.
+    *   Adam suggested decreasing the learning rate to prevent the loss from
+        getting stuck.
+*   Ran a few test runs on the small dataset, increasing truncate values and
+    decreasing the learning rate. Preliminary results showed that decreasing
+    the learning rate not only prevented the loss from getting stuck, but also
+    prevented output values of 0 from occuring, which effectively prevents
+    the nan problem as well.
+*   The working learning rates appear to be in the following ranges:
+    *   1e-1 for small truncate values (~10)
+    *   1e-2 for medium truncate values (~50)
+    *   1e-3 for larger truncate values (~100)
+    *   1e-4 for large truncate values (~500)
+
+### Mar 21-22 2017
+
+*   Started a GRU-RNN run on the large dataset with a truncate value of 100
+    and a learning rate of 0.005.
+*   On March 22, quattro got taken down so that its memory issues could be
+    fixed. By then, the network had trained for 11 epochs, with a last
+    recorded loss of 4.607.
+
+### Mar 24 2017
+
+*   Quattro's memory issues were fixed, and it was back up and running.
+*   Loaded up the previously saved model and continued training the RNN model
+    from Mar 21. Since 11 epochs took a relatively small amount of time, I set
+    the model to train for a further 38 epochs (should've been 39, to get it
+    to a total of 50).
+*   Created a new repository for the Terry project. Current plan is to work on
+    the Terry project, and using the previous RNN repo for testing purposes of
+    larger-scale changes. The Terry project should eventually become executable
+    in some way, perhaps through a web interface, while the older repo could
+    eventually be turned into a python module with a bunch of different RNN
+    architectures.
+
 ---
 
 <a name="resources"/>
