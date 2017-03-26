@@ -642,6 +642,42 @@ This project's objectives are, in relative order:
     eventually be turned into a python module with a bunch of different RNN
     architectures.
 
+### Mar 25 2017
+
+*   Refactored rnn code - loading the dataset is now done during class
+    initialization.
+*   Modified data_utils.py (the script used to create datasets), to log
+    the percentage of all words covered by the vocabulary. This way, it is
+    easy to tell if the vocabulary is too small.
+*   Recreated the large story dataset, the 8000-word vocabulary captures 94.1%
+    of all words, which I think is a good number.
+*   Added an embedding layer to the rnn. The embedding layer creates
+    representations of words, and thus simulates the rnn learning what words
+    mean.
+*   The embedding layer can be reused in cases where the vocabulary is the same,
+    and so I had it saved separately.
+*   Ran a test of the rnn with word embeddings, it seemed to run fine, although
+    it was hard to tell with a small number of epochs if the output was
+    noticeably affected.
+
+### Mar 26
+
+*   Checked up on the training of model from Mar 24. It had trained for a
+    total of 31 out of 38 epochs, with a final loss of ~4.494. The loss at this
+    point is fairly steady, but still decreasing at rates in the 0.0001-0.0005
+    range.
+*   Loaded the model and generated output. Output is generally disappointingly
+    short (about 100 words per 'story'), with a couple good sentences here and
+    there.
+*   I did not see any paragraphs in the stories, which means I might have to
+    change how I format my data, or it might be a limitation of the csv dataset.
+*   Generation of stories was broken up periodically by an error message
+    that said the sum of the output probabilities was > 1. This was pretty
+    rare, and re-running the method would get it started again. Not sure why
+    this is the case.
+*   Did some more refactoring on the rnn code and tested it to make sure it
+    worked.
+
 ---
 
 <a name="resources"/>
