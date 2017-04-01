@@ -660,7 +660,7 @@ This project's objectives are, in relative order:
     it was hard to tell with a small number of epochs if the output was
     noticeably affected.
 
-### Mar 26
+### Mar 26 2017
 
 *   Checked up on the training of model from Mar 24. It had trained for a
     total of 31 out of 38 epochs, with a final loss of ~4.494. The loss at this
@@ -677,6 +677,62 @@ This project's objectives are, in relative order:
     this is the case.
 *   Did some more refactoring on the rnn code and tested it to make sure it
     worked.
+
+### Mar 27 2017
+
+*   Moved saving of graph to its own function, to shorten the train_rnn
+    function.
+*   Made learning rate decrease if change in loss is less than 1%.
+*   Made training stop if, over 10 epochs, the loss changes by less than 1%.
+*   Started training a new model, with hidden and embedding layer sizes of 200,
+    a learning rate of 0.0005 and a truncate value of 500, with the hope that
+    it will produce longer paragraphs.
+
+### Mar 28 2017
+
+*   Attempted using Heroku's web application hosting service to create a
+    front-end to generate sentences, paragraphs and stories with the
+    RNN.
+*   Couldn't figure out how to use python's inbuilt server module with
+    Heroku, so followed a Flask tutorial.
+*   Couldn't get Flask server to display generated stories - the connection
+    kept timing out.
+
+### Mar 30 2017
+
+*   May have figured out some of the issues with the RNN text generation.
+    *   This implementation uses START and END tokens, like the tutorial.
+        Karpathy's implementation most likely does not, or only uses a START
+        token, which is why he can produce much longer output, with a smaller
+        truncate value than 5000. If I modify my code to ignore END tokens,
+        while providing a desired length, I could probably do the same, with
+        the caveat of having output end more abruptly.
+    *   My dataset appears to contain some deleted comments, which introduces
+        random tokens like '[' and ']' into the output.
+    *   The learning rate should probably decrease by a value less than 0.5
+        (which is what I currently have), at least in the earlier epochs, so
+        training doesn't end too early.
+*   Training of model from Mar 27 ended:
+    *   Training took 18 epochs, with a final loss of ~4.43.
+    *   Generating output from it produced longer stories, as expected.
+    *   The quality of individual sentences may have somewhat deteriorated.
+    *   Generating stories takes longer. Generating 25 examples took about 13
+        minutes, while previously it took seconds to a couple minutes.
+*   Added a pretty_print method that removes some of the issues with the
+    display of output, such as removing spaces around punctuation, and
+    capitalizing first words of sentences.
+
+### Mar 31 2017
+
+*   Decided to try a php-based front-end to the project. When a user clicks
+    on an html button to generate a sentence/paragraph/story, a javascript
+    script will send an ajax request to a php script, which will use the
+    system() call to run the python script to generate output and return the
+    result.
+*   If script runs too long, I am considering displaying stored output instead.
+*   To prevent script from timing out, I might need to learn to use python's
+    signal module, or attempt to set a timeout for separate threads.
+*   Started working on the html and css files for the front-end.
 
 ---
 
