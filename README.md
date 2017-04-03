@@ -734,6 +734,22 @@ This project's objectives are, in relative order:
     signal module, or attempt to set a timeout for separate threads.
 *   Started working on the html and css files for the front-end.
 
+### Mar 1-2 2017
+
+*   Worked on html and css for the demo front-end.
+*   Fixed an error in calculating % of unknowns in sentence and paragraph
+    generation.
+*   Added a while loop to the the story generation to incorporate a minimum
+    length parameter.
+*   Improved my pretty_print method by adding some more string replace
+    statements.
+*   Added a python interface to generate output and print them to standard
+    output as json objects. These should be available to php scripts via
+    asynchronous AJAX requests.
+*   Story generation with a truncate value of 500 still takes too long to
+    work, need to figure out if the truncate value for text generation can be
+    different from the truncate value during training.
+
 ---
 
 <a name="resources"/>
